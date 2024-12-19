@@ -21,7 +21,7 @@ public class GridUtils {
 
     private static <T> List<Grid.Column<T>> getFilteredColumns(Grid<T> grid, Grid.Column<T>... excludedColumns) {
         Map<Grid.Column<?>, Boolean> excludedMap = Arrays.stream(excludedColumns).collect(Collectors.toMap(column -> column, column -> true));
-        grid.getColumns().stream()
+        return grid.getColumns().stream()
                 .filter(column -> !excludedMap.containsKey(column))
                 .collect(Collectors.toList());
     }
